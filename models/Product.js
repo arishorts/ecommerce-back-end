@@ -19,6 +19,8 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    //QUESTION: WHY IS THIS BEING STORED AS AN INTEGER NOT A DECIMAL?
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
