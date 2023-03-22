@@ -4,8 +4,6 @@ const Category = require("./Category");
 const Tag = require("./Tag");
 const ProductTag = require("./ProductTag");
 
-//QUESTION: why is product returning the tagid and productid after i define foreignkey and otherkey
-
 // Products belongsTo Category
 Product.belongsTo(Category, {
   foreignKey: "category_id",
@@ -21,17 +19,17 @@ Category.hasMany(Product, {
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
   through: ProductTag,
-  // foreignKey: "typeId",
-  // otherKey: "productId",
-  // as: "tags",
+  unique: false,
+  foreignKey: "product_id",
+  otherKey: "tag_id",
 });
 
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
   through: ProductTag,
-  // foreignKey: "type_Id",
-  // otherKey: "object_Id",
-  // as: "products",
+  unique: false,
+  foreignKey: "tag_id",
+  otherKey: "product_id",
 });
 
 module.exports = {
